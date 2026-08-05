@@ -36,7 +36,20 @@ function renderLyricLine(line: string) {
          return null;
       }
     }
-    return <span key={index}>{part}</span>;
+    
+    const subParts = part.split(/\.\.\.\s*/);
+    return (
+      <span key={index}>
+        {subParts.map((sub, i) => (
+          <span key={i}>
+            {sub}
+            {i < subParts.length - 1 && (
+              <>...<br /></>
+            )}
+          </span>
+        ))}
+      </span>
+    );
   });
 }
 

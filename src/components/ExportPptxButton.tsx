@@ -85,7 +85,14 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
 
           const trimmedLine = lineText.trim();
           if (trimmedLine) {
-             currentSlideLines.push(trimmedLine);
+             const subLines = trimmedLine.split(/\.\.\.\s*/);
+             subLines.forEach((sub, i) => {
+                if (i < subLines.length - 1) {
+                   currentSlideLines.push(sub + "...");
+                } else if (sub.trim() !== '') {
+                   currentSlideLines.push(sub);
+                }
+             });
           }
         });
         
