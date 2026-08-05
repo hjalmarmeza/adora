@@ -32,7 +32,8 @@ function renderLyricLine(line: string) {
       if (isStandard) {
          return <span key={index} className="text-primary font-bold text-sm tracking-widest uppercase block mt-6 mb-2 bg-primary/10 px-3 py-1 rounded-md border border-primary/20 w-fit">{part}</span>;
       } else {
-         return <span key={index} className="projector-hidden text-on-surface-variant text-xs uppercase opacity-70 mx-1">{part}</span>;
+         // User requested to completely hide these instructions everywhere
+         return null;
       }
     }
     return <span key={index}>{part}</span>;
