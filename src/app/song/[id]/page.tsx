@@ -150,23 +150,11 @@ export default async function SongPage({ params }: SongProps) {
       </article>
 
       {/* SVG Premium Print Footer */}
-      <div className="hidden print:flex fixed bottom-0 left-0 right-0 justify-between items-end w-full pb-8 px-12 font-sans z-50">
-        {/* Left Side: Verse */}
-        <div className="max-w-sm">
-          <svg width="220" height="40" viewBox="0 0 220 40" className="overflow-visible text-slate-700">
-            <path id="wavePath" d="M 0,25 Q 55,10 110,25 T 220,25" fill="transparent" />
-            <text fill="currentColor" className="font-serif italic text-[14px] tracking-[0.1em]">
-              <textPath href="#wavePath" startOffset="50%" textAnchor="middle">
-                "En espíritu y verdad"
-              </textPath>
-            </text>
-          </svg>
-        </div>
-        
+      <div className="hidden print:flex fixed bottom-0 left-0 right-0 justify-end items-end w-full pb-8 px-12 font-sans z-50">
         {/* Right Side: Premium ADORA SVG Logo watermark */}
         <div className="text-slate-300 mr-4 mb-2">
-          <svg width="150" height="60" viewBox="0 0 150 60" className="opacity-80">
-            <text x="75" y="40" className="font-sans" font-size="22" font-weight="900" letter-spacing="0.15em" fill="#94a3b8" text-anchor="middle">A D O R A</text>
+          <svg width="150" height="60" viewBox="0 0 150 60" className="opacity-100">
+            <text x="75" y="40" className="font-sans" font-size="22" font-weight="900" letter-spacing="0.15em" fill="#334155" text-anchor="middle">A D O R A</text>
             <path d="M 60,15 Q 75,5 90,15" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>

@@ -54,16 +54,19 @@
       display: none !important;
     }
     
-    body, html {
+    html, body {
       background: white !important;
       color: black !important;
       font-family: var(--font-inter), sans-serif !important;
-      padding: 1.5cm !important;
+      padding: 0 !important;
+      margin: 0 !important;
     }
     
     main {
-      padding-top: 0 !important;
-      padding-bottom: 2.5cm !important; /* Prevents text from overlapping the footer */
+      padding-top: 1cm !important;
+      padding-bottom: 2.5cm !important; 
+      padding-left: 1.5cm !important;
+      padding-right: 1.5cm !important;
       min-height: auto !important;
       margin: 0 !important;
     }
