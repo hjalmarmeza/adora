@@ -52,17 +52,19 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
                  });
               }
               
-              const fSize = currentSlideLines.length > 6 ? 32 : currentSlideLines.length > 4 ? 40 : 52;
+              const numLines = currentSlideLines.length;
+              const fSize = numLines >= 8 ? 24 : numLines >= 6 ? 28 : numLines >= 4 ? 36 : 44;
               s.addText(chunk.join('\n'), {
-                x: '5%',
-                y: '10%',
-                w: '90%',
-                h: '80%',
+                x: '2%',
+                y: '5%',
+                w: '96%',
+                h: '90%',
                 align: 'center',
                 valign: 'middle',
                 color: 'FFFFFF',
                 fontSize: fSize,
                 bold: true,
+                autoFit: true,
               });
             }
             currentSlideLines = [];
