@@ -62,16 +62,30 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
         };
 
         song.lyrics.forEach(line => {
-          const lower = line.trim().toLowerCase();
-          if (lower === '') {
+          if (line.trim() === '') {
              finalizeSlide();
-          } else if (lower.startsWith('[') && lower.endsWith(']')) {
-             if (allowedBrackets.includes(lower)) {
-                finalizeSlide();
-                sectionName = line;
-             }
-          } else {
-             currentSlideLines.push(line);
+             return;
+          }
+
+          const parts = line.split(/(\[.*?\])/g);
+          let lineText = '';
+
+          parts.forEach(part => {
+            if (part.startsWith('[') && part.endsWith(']')) {
+              const lower = part.toLowerCase();
+              const isStandard = allowedBrackets.some(b => lower.includes(b.replace('[','').replace(']','')));
+              if (isStandard) {
+                 finalizeSlide();
+                 sectionName = part;
+              }
+            } else {
+              lineText += part;
+            }
+          });
+
+          const trimmedLine = lineText.trim();
+          if (trimmedLine) {
+             currentSlideLines.push(trimmedLine);
           }
         });
         
