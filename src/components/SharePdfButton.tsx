@@ -69,9 +69,10 @@ export default function SharePdfButton({ song }: SharePdfButtonProps) {
         </div>
       `;
 
-      const opt = {
-        margin: [10, 10, 10, 10] as [number, number, number, number],
-        filename:     `${song.title}.pdf`,
+      // Usamos 'any' para evitar que TypeScript se ponga estricto con los tipos inferidos de html2pdf
+      const opt: any = {
+        margin: [10, 10, 10, 10],
+        filename: `${song.title}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
