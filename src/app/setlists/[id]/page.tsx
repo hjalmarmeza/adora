@@ -32,8 +32,8 @@ export default function SetlistDetailPage() {
           setSetlist(setlistSnap.data());
         }
         
-        const songs = songsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-        songs.sort((a, b) => a.title.localeCompare(b.title));
+        const songs = songsSnap.docs.map(d => ({ id: d.id, ...d.data() } as any));
+        songs.sort((a: any, b: any) => a.title.localeCompare(b.title));
         setAllSongs(songs);
         
         setLoading(false);
