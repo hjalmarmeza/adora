@@ -135,7 +135,7 @@ export default function Home() {
           <div className="text-center text-on-surface-variant mt-8">No se encontraron canciones que coincidan con tu búsqueda.</div>
         ) : (
           filteredSongs.map((song) => {
-            const isManual = song.source === 'manual';
+            const isManual = song.source !== 'api' && song.source !== 'api-verified';
             const borderStyle = isManual ? { border: '1px solid rgba(221, 183, 255, 0.5)', borderLeft: '4px solid #ddb7ff' } : {};
             const borderClass = isManual 
               ? "shadow-[0_0_20px_rgba(221,183,255,0.15)]" 

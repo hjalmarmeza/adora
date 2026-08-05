@@ -35,7 +35,7 @@ export default function Papelera() {
   };
 
   const handleHardDelete = async (song: any) => {
-    if (song.source === 'manual') {
+    if (song.source !== 'api' && song.source !== 'api-verified') {
       const pin = window.prompt('Esta canción fue ingresada manualmente. Ingresa el PIN para borrarla definitivamente:');
       if (pin !== '5028') {
         alert('PIN incorrecto. No se puede borrar la canción.');
@@ -80,7 +80,7 @@ export default function Papelera() {
           </div>
         ) : (
           songsData.map((song) => {
-            const isManual = song.source === 'manual';
+            const isManual = song.source !== 'api' && song.source !== 'api-verified';
             const borderStyle = isManual ? { border: '1px solid rgba(221, 183, 255, 0.5)', borderLeft: '4px solid #ddb7ff' } : { border: '1px solid rgba(255, 180, 171, 0.1)' };
             const borderClass = isManual 
               ? "shadow-[0_0_20px_rgba(221,183,255,0.15)]" 
