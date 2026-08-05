@@ -19,12 +19,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isAuthenticated = cookies().get("adora_auth")?.value === "true";
+  const cookieStore = await cookies();
+  const isAuthenticated = cookieStore.get("adora_auth")?.value === "true";
 
   if (!isAuthenticated) {
     return (
