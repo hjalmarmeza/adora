@@ -3,9 +3,12 @@
 import { cookies } from "next/headers";
 
 export async function verifyPin(pin: string): Promise<boolean> {
-  const validPin = process.env.APP_PIN;
+  const rawPin = process.env.APP_PIN || "";
+  const validPin = rawPin.replace(/['"]/g, "").trim();
   
-  if (pin === validPin) {
+  console.log("Verifying PIN - Expected:", validPin, " | Provided:", pin);
+
+  if (pin === validPin && validPin.length > 0) {
     const cookieStore = await cookies();
     cookieStore.set("adora_auth", "true", {
       httpOnly: true,
