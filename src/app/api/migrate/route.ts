@@ -25,6 +25,6 @@ export async function GET() {
     return NextResponse.json({ success: true, count, message: 'Migración completada con éxito.' });
   } catch (error) {
     console.error('Migration error:', error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json({ success: false, error: (error as Error).message }, { status: 500 });
   }
 }
