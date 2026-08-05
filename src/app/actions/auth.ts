@@ -22,3 +22,8 @@ export async function verifyPin(pin: string): Promise<boolean> {
   
   return false;
 }
+
+export async function logout(): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.delete("adora_auth");
+}

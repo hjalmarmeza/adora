@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import LoginScreen from "@/components/LoginScreen";
+import LogoutButton from "@/components/LogoutButton";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -49,10 +50,11 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.variable} ${montserrat.variable} font-body-md overflow-x-hidden antialiased bg-background`}>
         {/* Top App Bar */}
-        <header className="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(173,198,255,0.1)] flex justify-center items-center px-container-padding h-16 no-print">
+        <header className="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(173,198,255,0.1)] flex justify-center items-center px-container-padding h-16 no-print relative">
           <Link href="/">
             <h1 className="font-display-lg text-display-lg-mobile bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">¡Adora!</h1>
           </Link>
+          <LogoutButton />
         </header>
 
         {children}
