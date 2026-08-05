@@ -125,7 +125,7 @@ export default function SetlistDetailPage() {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      await html2pdf().set(opt).from(container).save();
+      await html2pdf().set(opt as any).from(container).save();
     } catch (err) {
       console.error(err);
       alert('Error generando PDF');
