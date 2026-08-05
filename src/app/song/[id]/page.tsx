@@ -82,13 +82,13 @@ export default async function SongPage({ params }: SongProps) {
   const embedUrl = getYouTubeEmbedUrl(song.youtubeLink);
 
   return (
-    <main className="pt-24 pb-32 px-container-padding max-w-4xl mx-auto animate-fade-in space-y-8">
+    <main className="pt-24 pb-32 px-container-padding max-w-4xl mx-auto animate-fade-in space-y-8 print:space-y-0">
       <Link href="/" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors no-print font-label-sm uppercase tracking-widest">
         <span className="material-symbols-outlined text-[18px]">arrow_back</span>
         Volver al inicio
       </Link>
       
-      <article id="pdf-content" className="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden">
+      <article id="pdf-content" className="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden print:mt-0">
         {/* Glow Effects */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
@@ -150,19 +150,25 @@ export default async function SongPage({ params }: SongProps) {
       </article>
 
       {/* SVG Premium Print Footer */}
-      <div className="hidden print:flex fixed bottom-0 left-0 right-0 justify-between items-end w-full pb-8 px-12 font-sans opacity-60 z-50">
+      <div className="hidden print:flex fixed bottom-0 left-0 right-0 justify-between items-end w-full pb-8 px-12 font-sans z-50">
+        {/* Left Side: Verse */}
         <div className="max-w-sm">
-          <svg width="220" height="40" viewBox="0 0 220 40" className="overflow-visible text-slate-500">
+          <svg width="220" height="40" viewBox="0 0 220 40" className="overflow-visible text-slate-700">
             <path id="wavePath" d="M 0,25 Q 55,10 110,25 T 220,25" fill="transparent" />
-            <text fill="currentColor" className="font-serif italic text-[13px] tracking-[0.15em]">
+            <text fill="currentColor" className="font-serif italic text-[14px] tracking-[0.1em]">
               <textPath href="#wavePath" startOffset="50%" textAnchor="middle">
                 "En espíritu y verdad"
               </textPath>
             </text>
           </svg>
         </div>
-        <div className="text-slate-300 font-bold tracking-[0.2em] uppercase text-xl">
-          ¡ADORA!
+        
+        {/* Right Side: Premium ADORA SVG Logo watermark */}
+        <div className="text-slate-300 mr-4 mb-2">
+          <svg width="150" height="60" viewBox="0 0 150 60" className="opacity-80">
+            <text x="75" y="40" className="font-sans" font-size="22" font-weight="900" letter-spacing="0.15em" fill="#94a3b8" text-anchor="middle">A D O R A</text>
+            <path d="M 60,15 Q 75,5 90,15" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round"/>
+          </svg>
         </div>
       </div>
     </main>

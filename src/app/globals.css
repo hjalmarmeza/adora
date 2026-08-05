@@ -63,7 +63,7 @@
     
     main {
       padding-top: 0 !important;
-      padding-bottom: 0 !important;
+      padding-bottom: 2.5cm !important; /* Prevents text from overlapping the footer */
       min-height: auto !important;
       margin: 0 !important;
     }
