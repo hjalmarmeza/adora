@@ -125,7 +125,6 @@
       font-size: 11pt !important;
       margin: 0 auto;
       max-width: 800px;
-      padding-bottom: 2.5cm !important; /* Safety padding for the footer */
     }
     
     #lyrics-container p {
