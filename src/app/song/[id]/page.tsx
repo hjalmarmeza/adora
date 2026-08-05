@@ -12,9 +12,7 @@ interface SongProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return [];
-}
+export const dynamic = 'force-dynamic';
 
 const allowedBrackets = [
   '[intro]', '[verse]', '[verse 1]', '[verse 2]', '[verse 3]', 
