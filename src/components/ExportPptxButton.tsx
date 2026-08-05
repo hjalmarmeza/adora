@@ -52,9 +52,17 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
                  });
               }
               
+              const fSize = currentSlideLines.length > 6 ? 32 : currentSlideLines.length > 4 ? 40 : 52;
               s.addText(chunk.join('\n'), {
-                x: 0.5, y: 1.5, w: "90%", h: "60%",
-                fontSize: 44, color: 'FFFFFF', align: 'center', valign: 'middle', fontFace: 'Arial', bold: true
+                x: '5%',
+                y: '10%',
+                w: '90%',
+                h: '80%',
+                align: 'center',
+                valign: 'middle',
+                color: 'FFFFFF',
+                fontSize: fSize,
+                bold: true,
               });
             }
             currentSlideLines = [];
