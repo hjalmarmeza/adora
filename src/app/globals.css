@@ -58,12 +58,14 @@
       background: white !important;
       color: black !important;
       font-family: var(--font-inter), sans-serif !important;
+      padding: 1.5cm !important;
     }
     
     main {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
       min-height: auto !important;
+      margin: 0 !important;
     }
 
     /* WOW Premium Title Area */
@@ -131,29 +133,21 @@
       padding: 4px 12px !important;
       border-radius: 6px !important;
       margin-top: 14px !important;
-      margin-bottom: 4px !important;
-      display: inline-block !important;
+      margin-bottom: 8px !important;
+      display: block !important;
+      width: fit-content !important;
       letter-spacing: 0.1em !important;
       text-transform: uppercase !important;
     }
 
-    /* Subtle branding watermark */
+    /* Remove old watermark as we are adding a custom fixed footer */
     body::after {
-      content: "¡ADORA! PREMIUM LYRICS";
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      font-family: var(--font-montserrat), sans-serif;
-      font-weight: 800;
-      font-size: 9pt;
-      color: #cbd5e1 !important;
-      letter-spacing: 0.1em;
-      padding: 1cm;
-      z-index: -1;
+      display: none !important;
     }
 
     @page {
-      margin: 1.5cm;
+      size: auto;
+      margin: 0mm; /* Hides the default browser headers and footers */
     }
   }
 }

@@ -74,6 +74,15 @@ export default async function SongPage({ params }: SongProps) {
           <span className="material-symbols-outlined mr-2">arrow_back</span>
           Volver al inicio
         </Link>
+        <div className="hidden print:flex fixed bottom-0 left-0 right-0 justify-between items-end w-full pb-8 px-12 font-sans opacity-60 z-50">
+          <div className="text-slate-400 font-medium max-w-sm text-xs italic">
+            "Cantaré al Señor toda mi vida; cantaré salmos a mi Dios mientras tenga aliento." - Salmos 104:33
+          </div>
+          <div className="text-slate-300 font-bold tracking-[0.2em] uppercase text-xl">
+            ¡ADORA!
+          </div>
+        </div>
+
       </main>
     );
   }
