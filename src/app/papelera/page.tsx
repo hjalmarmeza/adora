@@ -82,8 +82,8 @@ export default function Papelera() {
           songsData.map((song) => {
             const isManual = song.source === 'manual';
             const borderClass = isManual 
-              ? "border-secondary/40 hover:border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
-              : "border-error/10 hover:border-error/30";
+              ? "!border-secondary/40 hover:!border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
+              : "!border-error/10 hover:!border-error/30";
 
             return (
             <div key={song.id} className={`glass-panel rounded-2xl overflow-hidden mb-6 flex flex-col md:flex-row items-center justify-between p-6 border transition-colors ${borderClass}`}>

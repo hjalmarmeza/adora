@@ -137,8 +137,8 @@ export default function Home() {
           filteredSongs.map((song) => {
             const isManual = song.source === 'manual';
             const borderClass = isManual 
-              ? "border-secondary/40 hover:border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
-              : "border-white/10 hover:border-white/30";
+              ? "!border-secondary/40 hover:!border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
+              : "!border-white/10 hover:!border-white/30";
               
             return (
             <Link href={`/song/${song.id}`} key={song.id}>
