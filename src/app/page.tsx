@@ -44,11 +44,7 @@ export default function Home() {
 
   const filteredSongs = sortedSongs.filter(song => {
     const term = searchTerm.toLowerCase();
-    const matchesSearch = (
-      (song.title && song.title.toLowerCase().includes(term)) ||
-      (song.style && song.style.toLowerCase().includes(term)) ||
-      (song.lyrics && song.lyrics.some((line: string) => line.toLowerCase().includes(term)))
-    );
+    const matchesSearch = song.title && song.title.toLowerCase().includes(term);
     const matchesTag = selectedTag ? (song.tags && song.tags.includes(selectedTag)) : true;
     return matchesSearch && matchesTag;
   });
@@ -60,8 +56,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative text-center py-8">
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
-        <h2 className="font-display-lg text-display-lg-mobile mb-2 text-glow tracking-tighter">ADORA</h2>
-        <p className="font-body-md text-on-surface-variant opacity-80 mb-8">
+        <p className="font-body-md text-on-surface-variant opacity-80 mb-8 mt-4">
           Repositorio de Adoración {!loading && songsData.length > 0 && `• ${songsData.length} canciones`}
         </p>
         <div className="flex flex-wrap justify-center gap-4">
@@ -84,7 +79,7 @@ export default function Home() {
           <span className="material-symbols-outlined text-on-surface-variant mr-4">search</span>
           <input 
             className="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md placeholder:text-on-surface-variant/50 outline-none" 
-            placeholder="Buscar por título, letra o estilo..." 
+            placeholder="Buscar por título..." 
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

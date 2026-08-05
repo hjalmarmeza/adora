@@ -24,12 +24,9 @@ const allowedBrackets = [
 
 function getLyricClass(line: string) {
   if (line.trim() === '') return 'h-6';
-  const lower = line.trim().toLowerCase();
-  if (lower.startsWith('[') && lower.endsWith(']')) {
-    if (!allowedBrackets.includes(lower)) {
-      return `hide-in-presentation text-on-surface-variant font-bold text-sm tracking-widest uppercase mt-4 mb-1`;
-    }
-    return 'text-primary font-bold text-sm tracking-widest uppercase mt-6 mb-2';
+  const trimmed = line.trim();
+  if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+    return 'text-primary font-bold text-sm tracking-widest uppercase mt-6 mb-2 block bg-primary/10 px-3 py-1 rounded-md border border-primary/20';
   }
   return 'text-white text-lg leading-relaxed';
 }
@@ -75,15 +72,12 @@ export default async function SongPage({ params }: SongProps) {
         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
 
-        <header className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-white/10 pb-8">
-          <div className="space-y-2 flex-1">
+        <header className="relative z-10 flex flex-col md:flex-row justify-between items-start gap-6 mb-12 border-b border-white/10 pb-8">
+          <div className="space-y-4 flex-1 w-full">
             <h1 className="font-display-lg text-display-lg-mobile text-glow tracking-tighter text-white leading-tight">
               {song.title}
             </h1>
             <div className="flex gap-3 items-center no-print flex-wrap">
-              <span className="bg-primary/20 text-primary-fixed-dim text-[11px] px-3 py-1 rounded-full uppercase font-bold tracking-widest border border-primary/30 inline-block">
-                {song.style || 'Sin Estilo'}
-              </span>
               {song.bpm && (
                 <span className="bg-secondary/20 text-secondary text-[11px] px-3 py-1 rounded-full uppercase font-bold tracking-widest border border-secondary/30 inline-flex items-center gap-1">
                   <span className="material-symbols-outlined text-[14px]">timer</span>
@@ -91,6 +85,12 @@ export default async function SongPage({ params }: SongProps) {
                 </span>
               )}
             </div>
+            {song.style && (
+              <p className="text-on-surface-variant text-sm leading-relaxed max-w-3xl no-print bg-surface-container/30 p-4 rounded-xl border border-white/5">
+                <span className="text-primary font-bold tracking-widest uppercase text-[10px] block mb-1">Estilo Musical</span>
+                {song.style}
+              </p>
+            )}
           </div>
           
           <div className="flex gap-2 flex-wrap no-print w-full md:w-auto">
