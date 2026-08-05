@@ -43,34 +43,63 @@
   }
 
   @media print {
+    * {
+      print-color-adjust: exact !important;
+      -webkit-print-color-adjust: exact !important;
+      text-shadow: none !important;
+      box-shadow: none !important;
+    }
+    
     .no-print {
       display: none !important;
     }
+    
     body, html {
       background: white !important;
       color: black !important;
+      font-family: var(--font-inter), sans-serif !important;
     }
+    
     main {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
       min-height: auto !important;
     }
-    * {
-      text-shadow: none !important;
-      box-shadow: none !important;
-    }
-    
-    /* Premium Title */
-    h1 {
-      color: #312e81 !important;
-      border-bottom: 3px solid #6366f1 !important;
-      padding-bottom: 0.5rem !important;
-      margin-bottom: 1rem !important;
-      font-size: 24pt !important;
-      font-weight: 900 !important;
+
+    /* WOW Premium Title Area */
+    #print-header {
+      background: linear-gradient(135deg, #0f172a 0%, #312e81 100%) !important;
+      border-radius: 16px !important;
+      padding: 24px 30px !important;
+      margin-bottom: 24px !important;
+      border: none !important;
       text-align: center !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    #print-header::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
+    h1 {
+      color: #ffffff !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      font-size: 26pt !important;
+      font-weight: 900 !important;
+      font-family: var(--font-montserrat), sans-serif !important;
       letter-spacing: -0.02em !important;
       text-transform: uppercase !important;
+      position: relative;
+      z-index: 2;
     }
 
     /* Elegant Lyrics Layout */
@@ -79,47 +108,52 @@
       margin: 0 auto;
       max-width: 800px;
     }
+    
     #lyrics-container p {
       color: #1e293b !important;
-      line-height: 1.25 !important;
+      line-height: 1.35 !important;
       margin-bottom: 0 !important;
       break-inside: avoid;
     }
+    
     #lyrics-container span {
       color: #0f172a !important;
+      font-weight: 500 !important;
     }
     
-    /* Premium Tags */
+    /* WOW Tags */
     span.text-primary {
-      color: white !important;
-      background: #4f46e5 !important;
+      color: #ffffff !important;
+      background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%) !important;
       border: none !important;
       font-size: 8pt !important;
-      font-weight: 700 !important;
-      padding: 3px 10px !important;
-      border-radius: 9999px !important;
-      margin-top: 8px !important;
-      margin-bottom: 2px !important;
+      font-weight: 800 !important;
+      padding: 4px 12px !important;
+      border-radius: 6px !important;
+      margin-top: 14px !important;
+      margin-bottom: 4px !important;
       display: inline-block !important;
-      letter-spacing: 0.05em !important;
+      letter-spacing: 0.1em !important;
       text-transform: uppercase !important;
-      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2) !important;
     }
 
     /* Subtle branding watermark */
     body::after {
-      content: "¡Adora! Premium Lyrics";
+      content: "¡ADORA! PREMIUM LYRICS";
       position: fixed;
       bottom: 0;
       right: 0;
+      font-family: var(--font-montserrat), sans-serif;
+      font-weight: 800;
       font-size: 9pt;
-      color: #94a3b8 !important;
-      padding: 0.5cm 1cm;
+      color: #cbd5e1 !important;
+      letter-spacing: 0.1em;
+      padding: 1cm;
       z-index: -1;
     }
 
     @page {
-      margin: 1cm 1.5cm;
+      margin: 1.5cm;
     }
   }
 }

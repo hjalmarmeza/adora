@@ -93,7 +93,7 @@ export default async function SongPage({ params }: SongProps) {
         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
 
-        <header className="relative z-10 flex flex-col gap-6 mb-12 border-b border-white/10 pb-8">
+        <header id="print-header" className="relative z-10 flex flex-col gap-6 mb-12 border-b border-white/10 pb-8">
           <div className="space-y-4 flex-1 w-full">
             <h1 className="font-display-lg text-display-lg-mobile text-glow tracking-tighter text-white leading-tight">
               {song.title}
