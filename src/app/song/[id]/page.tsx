@@ -75,8 +75,15 @@ export default async function SongPage({ params }: SongProps) {
           Volver al inicio
         </Link>
         <div className="hidden print:flex fixed bottom-0 left-0 right-0 justify-between items-end w-full pb-8 px-12 font-sans opacity-60 z-50">
-          <div className="text-slate-400 font-medium max-w-sm text-xs italic">
-            "Cantaré al Señor toda mi vida; cantaré salmos a mi Dios mientras tenga aliento." - Salmos 104:33
+          <div className="max-w-sm">
+            <svg width="220" height="40" viewBox="0 0 220 40" className="overflow-visible text-slate-500">
+              <path id="wavePath" d="M 0,25 Q 55,10 110,25 T 220,25" fill="transparent" />
+              <text fill="currentColor" className="font-serif italic text-[13px] tracking-[0.15em]">
+                <textPath href="#wavePath" startOffset="50%" textAnchor="middle">
+                  "En espíritu y verdad"
+                </textPath>
+              </text>
+            </svg>
           </div>
           <div className="text-slate-300 font-bold tracking-[0.2em] uppercase text-xl">
             ¡ADORA!
