@@ -136,13 +136,14 @@ export default function Home() {
         ) : (
           filteredSongs.map((song) => {
             const isManual = song.source === 'manual';
+            const borderStyle = isManual ? { border: '1px solid rgba(221, 183, 255, 0.5)', borderLeft: '4px solid #ddb7ff' } : {};
             const borderClass = isManual 
-              ? "!border-secondary/40 hover:!border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
-              : "!border-white/10 hover:!border-white/30";
+              ? "shadow-[0_0_20px_rgba(221,183,255,0.15)]" 
+              : "";
               
             return (
             <Link href={`/song/${song.id}`} key={song.id}>
-              <div className={`glass-panel rounded-2xl overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform mb-6 border ${borderClass}`}>
+              <div style={borderStyle} className={`glass-panel rounded-2xl overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform mb-6 ${borderClass}`}>
                 <div className="flex flex-col md:flex-row">
                   <div className="h-20 md:h-40 md:w-40 bg-surface-container-highest relative overflow-hidden flex-shrink-0">
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-500 primary-gradient opacity-60"></div>

@@ -81,12 +81,13 @@ export default function Papelera() {
         ) : (
           songsData.map((song) => {
             const isManual = song.source === 'manual';
+            const borderStyle = isManual ? { border: '1px solid rgba(221, 183, 255, 0.5)', borderLeft: '4px solid #ddb7ff' } : { border: '1px solid rgba(255, 180, 171, 0.1)' };
             const borderClass = isManual 
-              ? "!border-secondary/40 hover:!border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
-              : "!border-error/10 hover:!border-error/30";
+              ? "shadow-[0_0_20px_rgba(221,183,255,0.15)]" 
+              : "hover:border-error/30";
 
             return (
-            <div key={song.id} className={`glass-panel rounded-2xl overflow-hidden mb-6 flex flex-col md:flex-row items-center justify-between p-6 border transition-colors ${borderClass}`}>
+            <div style={borderStyle} key={song.id} className={`glass-panel rounded-2xl overflow-hidden mb-6 flex flex-col md:flex-row items-center justify-between p-6 transition-colors ${borderClass}`}>
               <div className="flex-grow mb-4 md:mb-0 w-full md:w-auto">
                 <h4 className="font-headline-md text-body-lg text-white mb-1">{song.title}</h4>
                 <p className="font-body-md text-on-surface-variant opacity-70">
