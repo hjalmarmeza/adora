@@ -22,13 +22,21 @@ const allowedBrackets = [
   '[bridge]', '[outro]', '[end]'
 ];
 
-function getLyricClass(line: string) {
-  if (line.trim() === '') return 'h-6';
-  const trimmed = line.trim();
-  if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
-    return 'text-primary font-bold text-sm tracking-widest uppercase mt-6 mb-2 block bg-primary/10 px-3 py-1 rounded-md border border-primary/20';
-  }
-  return 'text-white text-lg leading-relaxed';
+function renderLyricLine(line: string) {
+  if (line.trim() === '') return <br />;
+  const parts = line.split(/(\[.*?\])/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('[') && part.endsWith(']')) {
+      const lower = part.toLowerCase();
+      const isStandard = allowedBrackets.some(b => lower.includes(b.replace('[','').replace(']','')));
+      if (isStandard) {
+         return <span key={index} className="text-primary font-bold text-sm tracking-widest uppercase block mt-6 mb-2 bg-primary/10 px-3 py-1 rounded-md border border-primary/20 w-fit">{part}</span>;
+      } else {
+         return <span key={index} className="projector-hidden text-on-surface-variant text-xs uppercase opacity-70 mx-1">{part}</span>;
+      }
+    }
+    return <span key={index}>{part}</span>;
+  });
 }
 
 function getYouTubeEmbedUrl(url: string) {
@@ -72,7 +80,7 @@ export default async function SongPage({ params }: SongProps) {
         <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none no-print"></div>
 
-        <header className="relative z-10 flex flex-col md:flex-row justify-between items-start gap-6 mb-12 border-b border-white/10 pb-8">
+        <header className="relative z-10 flex flex-col gap-6 mb-12 border-b border-white/10 pb-8">
           <div className="space-y-4 flex-1 w-full">
             <h1 className="font-display-lg text-display-lg-mobile text-glow tracking-tighter text-white leading-tight">
               {song.title}
@@ -119,10 +127,10 @@ export default async function SongPage({ params }: SongProps) {
           </div>
         )}
         
-        <div className="relative z-10 font-body-lg" id="lyrics-container">
+        <div className="relative z-10 font-body-lg text-white text-lg leading-relaxed" id="lyrics-container">
           {song.lyrics.map((line: string, i: number) => (
-            <p key={i} className={getLyricClass(line)}>
-              {line}
+            <p key={i} className="mb-1">
+              {renderLyricLine(line)}
             </p>
           ))}
         </div>

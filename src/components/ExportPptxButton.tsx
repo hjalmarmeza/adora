@@ -1,6 +1,8 @@
 "use client";
 import { useState } from 'react';
 
+import pptxgen from 'pptxgenjs';
+
 interface ExportPptxButtonProps {
   title: string;
   songs: { title: string, lyrics: string[] }[];
@@ -12,7 +14,6 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
   const handleDownload = async () => {
     setIsGenerating(true);
     try {
-      const pptxgen = (await import('pptxgenjs')).default;
       let pptx = new pptxgen();
       
       pptx.layout = 'LAYOUT_16x9';
