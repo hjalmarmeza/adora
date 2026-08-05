@@ -69,10 +69,9 @@ export default async function SongPage({ params }: SongProps) {
 
   if (!snap.exists()) {
     return (
-      <main className="pt-32 pb-32 px-container-padding max-w-4xl mx-auto text-center animate-fade-in">
-        <h1 className="font-display-lg text-primary mb-6">Canción no encontrada</h1>
-        <Link href="/" className="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors">
-          <span className="material-symbols-outlined">arrow_back</span>
+      <main className="min-h-screen pt-24 pb-32 px-container-padding max-w-4xl mx-auto">
+        <Link href="/" className="inline-flex items-center text-primary hover:text-primary-fixed-dim transition-colors mb-6 font-label-md no-print">
+          <span className="material-symbols-outlined mr-2">arrow_back</span>
           Volver al inicio
         </Link>
       </main>
