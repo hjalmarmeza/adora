@@ -60,7 +60,7 @@ export default async function SongPage({ params }: SongProps) {
     );
   }
 
-  const song = snap.data();
+  const song = snap.data() as any;
   const embedUrl = getYouTubeEmbedUrl(song.youtubeLink);
 
   return (
