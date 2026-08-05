@@ -32,7 +32,9 @@ export default function SetlistDetailPage() {
           setSetlist(setlistSnap.data());
         }
         
-        const songs = songsSnap.docs.map(d => ({ id: d.id, ...d.data() } as any));
+        const songs = songsSnap.docs
+          .map(d => ({ id: d.id, ...d.data() } as any))
+          .filter(song => !song.deleted);
         songs.sort((a: any, b: any) => a.title.localeCompare(b.title));
         setAllSongs(songs);
         

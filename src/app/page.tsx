@@ -15,7 +15,9 @@ export default function Home() {
   useEffect(() => {
     const q = query(collection(db, 'songs'));
     const unsubscribe = onSnapshot(q, (snap) => {
-      const songs = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const songs = snap.docs
+        .map(doc => ({ id: doc.id, ...doc.data() }))
+        .filter((song: any) => !song.deleted);
       setSongsData(songs);
       setLoading(false);
     }, (err) => {

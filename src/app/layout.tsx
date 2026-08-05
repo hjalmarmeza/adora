@@ -58,20 +58,26 @@ export default async function RootLayout({
         {children}
 
         {/* Bottom Navigation Bar */}
-        <nav className="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/40 backdrop-blur-2xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 px-gutter pb-safe no-print">
-          <Link href="/" className="flex flex-col items-center justify-center text-primary filter drop-shadow-[0_0_8px_rgba(173,198,255,0.5)] active:scale-90 transition-transform">
-            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>library_music</span>
-            <span className="font-label-sm text-label-sm">Library</span>
-          </Link>
-          <Link href="/setlists" className="flex flex-col items-center justify-center text-on-tertiary-fixed-variant opacity-60 hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform">
-            <span className="material-symbols-outlined">event_note</span>
-            <span className="font-label-sm text-label-sm">Setlists</span>
-          </Link>
-          <Link href="/nueva-cancion" className="flex flex-col items-center justify-center text-on-tertiary-fixed-variant opacity-60 hover:text-primary-fixed-dim transition-colors active:scale-90 transition-transform">
-            <span className="material-symbols-outlined">add_circle</span>
-            <span className="font-label-sm text-label-sm">New Song</span>
-          </Link>
-        </nav>
+        <div className="fixed bottom-0 w-full glass-panel border-t border-white/5 pb-safe z-50 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)] no-print">
+          <nav className="flex justify-around items-center h-20 px-4 md:px-8 max-w-4xl mx-auto">
+            <Link href="/" className="flex flex-col items-center gap-1.5 p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 group">
+              <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">library_music</span>
+              <span className="text-[10px] uppercase font-bold tracking-widest">Librería</span>
+            </Link>
+            <Link href="/setlists" className="flex flex-col items-center gap-1.5 p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 group">
+              <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">queue_music</span>
+              <span className="text-[10px] uppercase font-bold tracking-widest">Setlists</span>
+            </Link>
+            <Link href="/nueva-cancion" className="flex flex-col items-center gap-1.5 p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 group">
+              <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">add_circle</span>
+              <span className="text-[10px] uppercase font-bold tracking-widest">Nueva</span>
+            </Link>
+            <Link href="/papelera" className="flex flex-col items-center gap-1.5 p-2 text-on-surface-variant hover:text-primary transition-colors active:scale-95 group">
+              <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">delete</span>
+              <span className="text-[10px] uppercase font-bold tracking-widest">Papelera</span>
+            </Link>
+          </nav>
+        </div>
       </body>
     </html>
   );

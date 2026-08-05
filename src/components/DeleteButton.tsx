@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { db } from '@/lib/firebase';
-import { doc, deleteDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 
 export default function DeleteButton({ songId }: { songId: string }) {
@@ -9,12 +9,12 @@ export default function DeleteButton({ songId }: { songId: string }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
-    const confirmDelete = window.confirm('¿Estás seguro de que deseas eliminar permanentemente esta canción? Esta acción no se puede deshacer.');
+    const confirmDelete = window.confirm('¿Deseas enviar esta canción a la papelera? (Podrás restaurarla después)');
     if (!confirmDelete) return;
     
     setIsDeleting(true);
     try {
-      await deleteDoc(doc(db, 'songs', songId));
+      await updateDoc(doc(db, 'songs', songId), { deleted: true });
       router.push('/');
     } catch (err: any) {
       console.error(err);
