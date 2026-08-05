@@ -30,7 +30,7 @@ function renderLyricLine(line: string) {
       const lower = part.toLowerCase();
       const isStandard = allowedBrackets.includes(lower);
       if (isStandard) {
-         return <span key={index} className="text-primary font-bold text-sm tracking-widest uppercase block mt-6 mb-2 bg-primary/10 px-3 py-1 rounded-md border border-primary/20 w-fit">{part}</span>;
+         return <span key={index} className="text-primary print:text-slate-800 font-black text-sm tracking-[0.15em] uppercase block mt-6 mb-2">{part}</span>;
       } else {
          // User requested to completely hide these instructions everywhere
          return null;
