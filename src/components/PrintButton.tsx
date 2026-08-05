@@ -19,9 +19,10 @@ export default function PrintButton({ title }: { title?: string }) {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
+      if (!element) throw new Error("No se encontró el contenido para PDF");
       document.body.classList.add('pdf-export-mode');
       
-      await html2pdf().set(opt).from(element).save();
+      await html2pdf().set(opt as any).from(element).save();
       
       document.body.classList.remove('pdf-export-mode');
     } catch (error) {
