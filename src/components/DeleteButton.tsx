@@ -4,11 +4,19 @@ import { db } from '@/lib/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 
-export default function DeleteButton({ songId }: { songId: string }) {
+export default function DeleteButton({ songId, isManual = false }: { songId: string, isManual?: boolean }) {
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
+    if (isManual) {
+      const pin = window.prompt('Esta canción fue ingresada manualmente. Ingresa el PIN para borrarla:');
+      if (pin !== '5028') {
+        alert('PIN incorrecto. No se puede borrar la canción.');
+        return;
+      }
+    }
+
     const confirmDelete = window.confirm('¿Deseas enviar esta canción a la papelera? (Podrás restaurarla después)');
     if (!confirmDelete) return;
     

@@ -34,12 +34,20 @@ export default function Papelera() {
     }
   };
 
-  const handleHardDelete = async (id: string, title: string) => {
-    const confirm = window.confirm(`¿Estás seguro de eliminar "${title}" definitivamente? Esta acción NO se puede deshacer.`);
+  const handleHardDelete = async (song: any) => {
+    if (song.source === 'manual') {
+      const pin = window.prompt('Esta canción fue ingresada manualmente. Ingresa el PIN para borrarla definitivamente:');
+      if (pin !== '5028') {
+        alert('PIN incorrecto. No se puede borrar la canción.');
+        return;
+      }
+    }
+
+    const confirm = window.confirm(`¿Estás seguro de eliminar "${song.title}" definitivamente? Esta acción NO se puede deshacer.`);
     if (!confirm) return;
 
     try {
-      await deleteDoc(doc(db, 'songs', id));
+      await deleteDoc(doc(db, 'songs', song.id));
     } catch (err: any) {
       alert('Error al eliminar definitivamente: ' + err.message);
     }
@@ -71,8 +79,14 @@ export default function Papelera() {
             <p>La papelera está vacía.</p>
           </div>
         ) : (
-          songsData.map((song) => (
-            <div key={song.id} className="glass-panel rounded-2xl overflow-hidden mb-6 flex flex-col md:flex-row items-center justify-between p-6 border border-error/10 hover:border-error/30 transition-colors">
+          songsData.map((song) => {
+            const isManual = song.source === 'manual';
+            const borderClass = isManual 
+              ? "border-secondary/40 hover:border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
+              : "border-error/10 hover:border-error/30";
+
+            return (
+            <div key={song.id} className={`glass-panel rounded-2xl overflow-hidden mb-6 flex flex-col md:flex-row items-center justify-between p-6 border transition-colors ${borderClass}`}>
               <div className="flex-grow mb-4 md:mb-0 w-full md:w-auto">
                 <h4 className="font-headline-md text-body-lg text-white mb-1">{song.title}</h4>
                 <p className="font-body-md text-on-surface-variant opacity-70">
@@ -88,7 +102,7 @@ export default function Papelera() {
                   Restaurar
                 </button>
                 <button 
-                  onClick={() => handleHardDelete(song.id, song.title)}
+                  onClick={() => handleHardDelete(song)}
                   className="flex-1 md:flex-none bg-error-container/20 hover:bg-error-container/40 text-error border border-error/30 px-6 py-3 rounded-xl font-label-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined text-[18px]">delete_forever</span>
@@ -96,7 +110,7 @@ export default function Papelera() {
                 </button>
               </div>
             </div>
-          ))
+          )})
         )}
       </section>
     </main>

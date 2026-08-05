@@ -134,9 +134,15 @@ export default function Home() {
         ) : filteredSongs.length === 0 ? (
           <div className="text-center text-on-surface-variant mt-8">No se encontraron canciones que coincidan con tu búsqueda.</div>
         ) : (
-          filteredSongs.map((song) => (
+          filteredSongs.map((song) => {
+            const isManual = song.source === 'manual';
+            const borderClass = isManual 
+              ? "border-secondary/40 hover:border-secondary/70 shadow-[0_0_15px_rgba(164,191,235,0.15)]" 
+              : "border-white/10 hover:border-white/30";
+              
+            return (
             <Link href={`/song/${song.id}`} key={song.id}>
-              <div className="glass-panel rounded-2xl overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform mb-6">
+              <div className={`glass-panel rounded-2xl overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform mb-6 border ${borderClass}`}>
                 <div className="flex flex-col md:flex-row">
                   <div className="h-20 md:h-40 md:w-40 bg-surface-container-highest relative overflow-hidden flex-shrink-0">
                     <div className="w-full h-full group-hover:scale-105 transition-transform duration-500 primary-gradient opacity-60"></div>
@@ -178,7 +184,8 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-          ))
+            );
+          })
         )}
       </section>
     </main>

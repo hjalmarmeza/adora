@@ -119,7 +119,7 @@ export default async function SongPage({ params }: SongProps) {
             <Link href={`/editar/${id}`} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 h-12 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center shrink-0" title="Editar">
               <span className="material-symbols-outlined">edit</span>
             </Link>
-            <DeleteButton songId={id} />
+            <DeleteButton songId={id} isManual={song.source === 'manual'} />
           </div>
         </header>
 
