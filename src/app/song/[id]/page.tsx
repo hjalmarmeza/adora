@@ -28,7 +28,7 @@ function renderLyricLine(line: string) {
   return parts.map((part, index) => {
     if (part.startsWith('[') && part.endsWith(']')) {
       const lower = part.toLowerCase();
-      const isStandard = allowedBrackets.some(b => lower.includes(b.replace('[','').replace(']','')));
+      const isStandard = allowedBrackets.includes(lower);
       if (isStandard) {
          return <span key={index} className="text-primary font-bold text-sm tracking-widest uppercase block mt-6 mb-2 bg-primary/10 px-3 py-1 rounded-md border border-primary/20 w-fit">{part}</span>;
       } else {

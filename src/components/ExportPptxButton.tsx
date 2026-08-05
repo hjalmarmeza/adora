@@ -73,7 +73,7 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
           parts.forEach(part => {
             if (part.startsWith('[') && part.endsWith(']')) {
               const lower = part.toLowerCase();
-              const isStandard = allowedBrackets.some(b => lower.includes(b.replace('[','').replace(']','')));
+              const isStandard = allowedBrackets.includes(lower);
               if (isStandard) {
                  finalizeSlide();
                  sectionName = part;
