@@ -4,6 +4,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import PrintButton from '@/components/PrintButton';
 import ExportPptxButton from '@/components/ExportPptxButton';
 import DeleteButton from '@/components/DeleteButton';
+import SharePdfButton from '@/components/SharePdfButton';
 import SongControls from '@/components/SongControls';
 
 interface SongProps {
@@ -112,11 +113,12 @@ export default async function SongPage({ params }: SongProps) {
             )}
           </div>
           
-          <div className="flex gap-2 flex-wrap no-print w-full md:w-auto">
+          <div className="flex flex-wrap justify-center gap-2 no-print w-full bg-surface-container/20 p-2 rounded-2xl border border-white/5 backdrop-blur-md shadow-lg mt-4 max-w-fit">
             <SongControls />
+            <SharePdfButton song={song} />
             <PrintButton title={song.title} />
             <ExportPptxButton title={song.title} songs={[song]} />
-            <Link href={`/editar/${id}`} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 p-3 rounded-xl transition-all shadow-lg flex items-center justify-center" title="Editar">
+            <Link href={`/editar/${id}`} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 h-12 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center shrink-0" title="Editar">
               <span className="material-symbols-outlined">edit</span>
             </Link>
             <DeleteButton songId={id} />

@@ -24,7 +24,7 @@ export default function DeleteButton({ songId }: { songId: string }) {
   };
 
   return (
-    <button onClick={handleDelete} disabled={isDeleting} className="no-print bg-error-container/20 hover:bg-error-container/40 text-error border border-error/30 p-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest disabled:opacity-50 ml-auto md:ml-4">
+    <button onClick={handleDelete} disabled={isDeleting} className="no-print bg-error-container/20 hover:bg-error-container/40 text-error border border-error/30 h-12 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest disabled:opacity-50 shrink-0">
       <span className="material-symbols-outlined">delete</span>
       <span className="hidden md:inline">{isDeleting ? 'BORRANDO...' : 'ELIMINAR'}</span>
     </button>

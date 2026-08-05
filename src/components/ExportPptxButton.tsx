@@ -120,7 +120,7 @@ export default function ExportPptxButton({ title, songs }: ExportPptxButtonProps
   };
 
   return (
-    <button onClick={handleDownload} disabled={isGenerating} className="no-print primary-gradient text-on-primary-fixed border border-primary/30 hover:shadow-[0_0_20px_rgba(173,198,255,0.3)] p-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest disabled:opacity-50">
+    <button onClick={handleDownload} disabled={isGenerating} className="no-print primary-gradient text-on-primary-fixed border border-primary/30 hover:shadow-[0_0_20px_rgba(173,198,255,0.3)] h-12 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest disabled:opacity-50 shrink-0">
       <span className="material-symbols-outlined">slideshow</span>
       <span className="hidden sm:inline">{isGenerating ? 'GENERANDO...' : 'PPTX'}</span>
     </button>

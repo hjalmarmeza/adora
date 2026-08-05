@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import LoginScreen from "@/components/LoginScreen";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -9,6 +11,12 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat
 export const metadata: Metadata = {
   title: "¡Adora! - Repositorio de Adoración",
   description: "Repositorio Premium de Letras de Adoración",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Adora Lyrics",
+  },
 };
 
 export default function RootLayout({
@@ -16,10 +24,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isAuthenticated = cookies().get("adora_auth")?.value === "true";
+
+  if (!isAuthenticated) {
+    return (
+      <html lang="es" className="dark">
+        <head>
+          <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+          <link rel="apple-touch-icon" href="/icons/adora_logo.jpg" />
+        </head>
+        <body className={`${inter.variable} ${montserrat.variable} font-body-md overflow-x-hidden antialiased bg-background`}>
+          <LoginScreen />
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="es" className="dark">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+        <link rel="apple-touch-icon" href="/icons/adora_logo.jpg" />
       </head>
       <body className={`${inter.variable} ${montserrat.variable} font-body-md overflow-x-hidden antialiased bg-background`}>
         {/* Top App Bar */}

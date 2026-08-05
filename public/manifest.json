@@ -1,0 +1,21 @@
+{
+  "name": "Adora Premium Lyrics",
+  "short_name": "Adora Lyrics",
+  "description": "Repositorio de letras y acordes de Adora",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/icons/adora_logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/icons/adora_logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

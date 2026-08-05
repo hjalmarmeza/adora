@@ -52,7 +52,7 @@ export default function SongControls() {
 
   return (
     <>
-      <button onClick={toggleFullscreen} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 p-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest" title="Modo Proyector">
+      <button onClick={toggleFullscreen} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 h-12 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest shrink-0" title="Modo Proyector">
         {isFullscreen ? (
           <span className="material-symbols-outlined">fullscreen_exit</span>
         ) : (
@@ -61,7 +61,7 @@ export default function SongControls() {
         <span className="hidden sm:inline">{isFullscreen ? 'SALIR' : 'PROYECTOR'}</span>
       </button>
 
-      <button onClick={toggleScroll} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 p-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest" title="Auto-Scroll">
+      <button onClick={toggleScroll} className="bg-surface-container hover:bg-surface-container-highest text-white border border-white/10 h-12 px-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 font-label-sm uppercase tracking-widest shrink-0" title="Auto-Scroll">
         {isScrolling ? (
           <span className="material-symbols-outlined">pause</span>
         ) : (
