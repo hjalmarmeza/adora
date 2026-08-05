@@ -68,6 +68,14 @@
       margin: 0 !important;
     }
 
+    .glass-panel {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+    }
+
     /* WOW Premium Title Area */
     #print-header {
       background: linear-gradient(135deg, #0f172a 0%, #312e81 100%) !important;
